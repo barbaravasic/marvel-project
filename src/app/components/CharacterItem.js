@@ -1,13 +1,15 @@
 import React from 'react';
 
-const CharacterItem = () => {
+const CharacterItem = (props) => {
+
+    const {name, picture}  = props.character
     return (
         <div className="card-container">
             <div className="card-title">
-                <h3>Loki of Asgard</h3>
+                <h3>{name}</h3>
             </div>
             <div className="card-image">
-                <img src="https://qph.fs.quoracdn.net/main-qimg-817a4235c53aba19e220b8c74f0c5607-c" alt="marvel character" />
+                <img src={picture} alt="marvel character" />
             </div>
         </div>
     );

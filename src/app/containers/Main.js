@@ -7,17 +7,22 @@ import { searchCharactersAction } from '../../actions/search-characters-action';
 
 class Main extends Component {
 
+   
+    
+
     onSearchCharacters = (event) => {
         event.preventDefault();
         const inputValue = event.target.value;
         this.props.searchCharactersAction(inputValue)
         
     }
+
     render() {
+ 
         return (
             <div>
                 <Search onSearchCharacters={this.onSearchCharacters}/>
-                <CharacterList />
+                <CharacterList searchedCharacters={this.props.searchedCharacters}/>
             </div>
         );
     }
