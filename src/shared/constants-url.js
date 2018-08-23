@@ -1,0 +1,1 @@
+export const charactersUrl = "http://gateway.marvel.com/v1/public/characters";

@@ -1,16 +1,39 @@
 import React, { Component } from 'react';
 import Search from '../components/Search';
 import CharacterList from '../components/CharacterList';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { searchCharactersAction } from '../../actions/search-characters-action';
 
 class Main extends Component {
+
+    onSearchCharacters = (event) => {
+        event.preventDefault();
+        const inputValue = event.target.value;
+        this.props.searchCharactersAction(inputValue)
+        
+    }
     render() {
         return (
             <div>
-                <Search />
+                <Search onSearchCharacters={this.onSearchCharacters}/>
                 <CharacterList />
             </div>
         );
     }
 }
 
-export default Main;
+function mapStateToProps(state){
+    return {
+        searchedCharacters: state.searchedCharacters
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({
+        searchCharactersAction:searchCharactersAction
+    }, dispatch)
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
