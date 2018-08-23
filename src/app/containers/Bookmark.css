@@ -1,0 +1,9 @@
+.bookmark{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    font-size: 25px;
+    color: #e23636;
+}

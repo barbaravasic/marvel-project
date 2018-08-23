@@ -14,8 +14,7 @@ const CharacterGrid = (props) => {
     }
     return (
         <main className="container-grid">
-        {renderCharacters()}
-           
+        {renderCharacters()}       
         </main>
     );
 };

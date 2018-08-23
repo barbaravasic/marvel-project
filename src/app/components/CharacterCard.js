@@ -1,4 +1,5 @@
 import React from 'react';
+import Bookmark from '../containers/Bookmark';
 
 const CharacterCard = (props) => {
 
@@ -11,6 +12,7 @@ const CharacterCard = (props) => {
             <div className="card-image">
                 <img src={picture} alt="marvel character" />
             </div>
+            <Bookmark character={props.character}/>
         </div>
     );
 };

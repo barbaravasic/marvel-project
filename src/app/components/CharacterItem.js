@@ -1,4 +1,5 @@
 import React from 'react';
+import Bookmark from '../containers/Bookmark';
 
 const CharacterItem = (props) => {
     const {name, picture} = props.character
@@ -10,6 +11,7 @@ const CharacterItem = (props) => {
             <div className="list-title">
                 <h3>{name}</h3>
             </div>
+            <Bookmark character={props.character}/>
         </div>
     );
 };

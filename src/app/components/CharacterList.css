@@ -16,6 +16,7 @@
     border: 1px solid #9c9a9a;
     padding: 10px;
     border-radius: 8px;
+    position: relative;
 }
 
 .list-image{
@@ -38,3 +39,4 @@
     margin: 0;
     color: #706f6f;
 }
+
