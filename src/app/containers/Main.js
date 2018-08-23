@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Search from '../components/Search';
-import CharacterList from '../components/CharacterList';
+import CharacterGrid from '../components/CharacterGrid';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { searchCharactersAction } from '../../actions/search-characters-action';
+import CharacterList from '../components/CharacterList';
 
 class Main extends Component {
 
@@ -20,7 +21,8 @@ class Main extends Component {
         return (
             <div>
                 <Search onSearchCharacters={this.onSearchCharacters}/>
-                <CharacterList searchedCharacters={this.props.searchedCharacters}/>
+                {/* <CharacterGrid searchedCharacters={this.props.searchedCharacters}/> */}
+                <CharacterList searchedCharacters={this.props.searchedCharacters} />
             </div>
         );
     }
@@ -28,7 +30,8 @@ class Main extends Component {
 
 function mapStateToProps(state){
     return {
-        searchedCharacters: state.searchedCharacters
+        searchedCharacters: state.searchedCharacters,
+        gridView: state.gridView
     }
 }
 

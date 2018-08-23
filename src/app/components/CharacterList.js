@@ -1,8 +1,9 @@
 import React from 'react';
-import './CharacterList.css';
 import CharacterItem from './CharacterItem';
+import './CharacterList.css'
 
 const CharacterList = (props) => {
+
     const renderCharacters = () => {
         if (props.searchedCharacters === null){
             return <h4>Type in search</h4>
@@ -13,12 +14,10 @@ const CharacterList = (props) => {
         }
     }
     return (
-        <main className="container">
-        {renderCharacters()}
-           
-        </main>
+        <div className="container-list">
+           {renderCharacters()}
+        </div>
     );
 };
-
 
 export default CharacterList;

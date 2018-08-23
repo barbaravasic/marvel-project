@@ -1,15 +1,14 @@
 import React from 'react';
 
 const CharacterItem = (props) => {
-
-    const {name, picture}  = props.character
+    const {name, picture} = props.character
     return (
-        <div className="card-container">
-            <div className="card-title">
-                <h3>{name}</h3>
+        <div className="list-item">
+            <div className="list-image">
+                <img src={picture} alt="image" />
             </div>
-            <div className="card-image">
-                <img src={picture} alt="marvel character" />
+            <div className="list-title">
+                <h3>{name}</h3>
             </div>
         </div>
     );
