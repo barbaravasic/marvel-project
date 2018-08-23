@@ -1,0 +1,26 @@
+header{
+    height: 80px;
+    position: relative;
+    background-color: #e23636;
+}
+
+.title{
+    text-align: center;
+    line-height: 80px;
+    margin: 0;
+    color: white;
+}
+
+.toggler-btn {
+    position: absolute;
+    right: 5%;
+    top: calc(50% - 10px);
+    border: none;
+    width: 30px;
+    height: 20px;
+    background: none;
+    color: white;
+}
+.hidden{
+    display: none;
+}
