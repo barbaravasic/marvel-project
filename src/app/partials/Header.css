@@ -20,7 +20,7 @@ header{
     height: 20px;
     background: none;
     color: white;
+    font-size: 25px;
+    outline: none;
 }
-.hidden{
-    display: none;
-}
+
