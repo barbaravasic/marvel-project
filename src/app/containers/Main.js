@@ -7,14 +7,12 @@ import { searchCharactersAction } from '../../actions/search-characters-action';
 
 class Main extends Component {
 
-   
-    
-
     onSearchCharacters = (event) => {
         event.preventDefault();
         const inputValue = event.target.value;
-        this.props.searchCharactersAction(inputValue)
-        
+        setTimeout(()=> {
+            this.props.searchCharactersAction(inputValue)
+        }, 2000)
     }
 
     render() {

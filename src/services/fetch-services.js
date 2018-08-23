@@ -1,4 +1,4 @@
-// import { requestHeader } from "../shared/constants-headers";
+
 
 export const getData = (url) => {
     return fetch(url)
