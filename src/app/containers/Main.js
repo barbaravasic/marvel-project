@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { searchCharactersAction } from '../../actions/search-characters-action';
 import CharacterList from '../components/CharacterList';
+import { getFromStorage } from '../../services/storage-services';
 
 class Main extends Component {
 
@@ -16,13 +17,24 @@ class Main extends Component {
         }, 2000)
     }
 
+    renderCharacters(){
+        const { searchedCharacters} = this.props;
+        const listView = getFromStorage("listView");
+        
+        if (!listView){
+            return <CharacterGrid searchedCharacters={searchedCharacters} />
+        } else{
+            return <CharacterList searchedCharacters={searchedCharacters}/>
+        }
+    }
+
+
     render() {
  
         return (
             <div>
                 <Search onSearchCharacters={this.onSearchCharacters}/>
-                {/* <CharacterGrid searchedCharacters={this.props.searchedCharacters}/> */}
-                <CharacterList searchedCharacters={this.props.searchedCharacters} />
+                {this.renderCharacters()}
             </div>
         );
     }
@@ -31,7 +43,7 @@ class Main extends Component {
 function mapStateToProps(state){
     return {
         searchedCharacters: state.searchedCharacters,
-        gridView: state.gridView
+        listView: state.listView
     }
 }
 

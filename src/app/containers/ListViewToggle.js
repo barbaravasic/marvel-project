@@ -2,18 +2,21 @@ import React, { Component } from 'react';
 import { changeViewAction } from '../../actions/change-view-action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { getFromStorage } from '../../services/storage-services';
 
 class ListViewToggle extends Component {
 
     onChangeView = event => {
         
         if (event.target.classList.contains("fas")) {
-            this.props.changeViewAction(this.props.gridView);
+            event.preventDefault();
+            this.props.changeViewAction(this.props.listView);
         }
     }
 
     renderViewIcon() {
-        if(this.props.gridView === true){
+        const listView = getFromStorage("listView")
+        if(listView === false){
             return <i className="fas fa-list-ul"></i>
         } else {
             return <i className="fas fa-th"></i>
@@ -31,7 +34,7 @@ class ListViewToggle extends Component {
 
 function mapStateToProps(state) {
     return {
-        gridView: state.gridView
+        listView: state.listView
     }
 }
 

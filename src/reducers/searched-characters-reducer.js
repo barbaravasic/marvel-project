@@ -5,8 +5,6 @@ export const searchCharactersReducer = (state = null, action) => {
         case searchCharactersFulfilled:
             state = action.payload;
             break;
-        default:
-            state = null;
     }
     return state;
 }
