@@ -21,8 +21,8 @@ const CharacterGrid = (props) => {
     const renderCharacters = () => {
            if (props.searchedCharacters) {
                return renderCharacterCards() 
-            } else if (bookmarkedCharacters && !props.searchedCharacters && bookmarkedCharacters.length) {
-                return <h4>Type in search</h4>
+            // } else if (!props.searchedCharacters && bookmarkedCharacters.length === 0) {
+            //     return <h4>Type in search</h4>
             } else {
                 return <h4>Type in search</h4>
             }

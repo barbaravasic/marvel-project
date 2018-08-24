@@ -7,6 +7,7 @@ import { getFromStorage } from '../../services/storage-services';
 const CharacterList = (props) => {
 
     const bookmarkedCharacters = getFromStorage("bookmarkedCharacters");
+    
 
     const renderCharacterList = () => {
         return props.searchedCharacters.map(character => {
@@ -19,11 +20,11 @@ const CharacterList = (props) => {
             }
         })
     }
-    
+
     const renderCharacters = () => {
            if (props.searchedCharacters) {
                return renderCharacterList() 
-            } else if (bookmarkedCharacters && !props.searchedCharacters && bookmarkedCharacters.length) {
+            } else if (bookmarkedCharacters && !props.searchedCharacters && bookmarkedCharacters.length === 0) {
                 return <h4>Type in search</h4>
             } else {
                 return <h4>Type in search</h4>
