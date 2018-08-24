@@ -26,7 +26,8 @@ class Main extends Component {
             charactersToRender = bookmarkedCharacters;
         } else if (searchedCharacters) {
             charactersToRender = searchedCharacters
-        }
+        } 
+
         if (listView){
             return <CharacterList searchedCharacters={charactersToRender}/>
         } else{

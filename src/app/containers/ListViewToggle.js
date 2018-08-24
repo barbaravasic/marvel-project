@@ -17,8 +17,6 @@ class ListViewToggle extends Component {
 
     renderViewIcon() {
         const listView = getFromStorage("listView")
-        console.log(listView);
-        
         if(!listView){
             return <i className="fas fa-list-ul"></i>
         } else {

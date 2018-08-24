@@ -4,13 +4,16 @@ import { bindActionCreators } from 'redux';
 import { bookmarkCharacterAction } from '../../actions/bookmark-character-action';
 import { connect } from 'react-redux';
 import { saveToStorage } from '../../services/storage-services';
+import { removeFromBookmarkAction } from '../../actions/remove-from-bookmark-action';
 
 class Bookmark extends Component {
 
     onBookmarkHandler = (event) => {
         event.preventDefault();
-        if (event.target.classList.contains("bookmark-icon")) {
+        if (event.target.classList.contains("unchecked")) {
             this.props.bookmarkCharacterAction(this.props.character)
+        } else if(event.target.classList.contains("checked")) {
+            this.props.removeFromBookmarked(this.props.character)
         }
     }
     
@@ -20,9 +23,9 @@ class Bookmark extends Component {
 
     renderBookmarkBtn() {
         if (this.props.character.bookmarked) {
-            return <i class="fas fa-bookmark bookmark-icon"></i>
+            return <i class="fas fa-bookmark checked"></i>
         } else {
-            return <i class="far fa-bookmark bookmark-icon"></i>
+            return <i class="far fa-bookmark unchecked"></i>
         }
     }
 
@@ -43,7 +46,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        bookmarkCharacterAction: bookmarkCharacterAction
+        bookmarkCharacterAction: bookmarkCharacterAction,
+        removeFromBookmarked: removeFromBookmarkAction
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Bookmark);
