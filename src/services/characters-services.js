@@ -12,8 +12,8 @@ export const getSearchedCharacters = (inputValue) => {
         return getData(url)
             .then(characters => {
                 return characters.map(character => {
-                    const { id, name, description, thumbnail } = character;
-                    return new Character(id, name, description, thumbnail);
+                    const { id, name, description, thumbnail, comics, series, stories } = character;
+                    return new Character(id, name, description, thumbnail, comics.items, series.items, stories.items);
                 })
             })
     }

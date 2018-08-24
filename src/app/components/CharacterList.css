@@ -19,6 +19,10 @@
     position: relative;
 }
 
+.list-title, .list-image:hover{
+    cursor: pointer;
+}
+
 .list-image{
     width: 100px;
     height: 100px;

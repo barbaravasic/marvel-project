@@ -13,7 +13,8 @@ class Bookmark extends Component {
         if (event.target.classList.contains("unchecked")) {
             this.props.bookmarkCharacterAction(this.props.character)
         } else if(event.target.classList.contains("checked")) {
-            this.props.removeFromBookmarked(this.props.character)
+            this.props.removeFromBookmarked(this.props.character);
+            window.location.reload()
         }
     }
     
@@ -23,9 +24,9 @@ class Bookmark extends Component {
 
     renderBookmarkBtn() {
         if (this.props.character.bookmarked) {
-            return <i class="fas fa-bookmark checked"></i>
+            return <i className="fas fa-bookmark checked"></i>
         } else {
-            return <i class="far fa-bookmark unchecked"></i>
+            return <i className="far fa-bookmark unchecked"></i>
         }
     }
 

@@ -25,7 +25,7 @@ const CharacterItem = (props) => {
         <React.Fragment>
         <div className="list-item" onClick={onOpenDetails}>
             <div className="list-image">
-                <img src={picture} alt="image" />
+                <img src={picture} alt="marvel" />
             </div>
             <div className="list-title">
                 <h3>{name}</h3>

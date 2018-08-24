@@ -7,8 +7,15 @@ header{
 .title{
     text-align: center;
     line-height: 80px;
-    margin: 0;
     color: white;
+    text-decoration: none;
+    cursor: default;
+}
+
+.title h1 {
+    width: 40%;
+    margin: 0 auto;
+    cursor: pointer;
 }
 
 .toggler-btn {
@@ -22,5 +29,9 @@ header{
     color: white;
     font-size: 25px;
     outline: none;
+}
+
+.toggler-btn:hover{
+    cursor: pointer;
 }
 

@@ -22,6 +22,7 @@ const CharacterCard = (props) => {
     }
 
     const { name, picture } = props.character
+
     return (
         <React.Fragment>
             <div className="card-container" onClick={onOpenDetails}>

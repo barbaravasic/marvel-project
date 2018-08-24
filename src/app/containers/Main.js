@@ -12,51 +12,48 @@ class Main extends Component {
     onSearchCharacters = (event) => {
         event.preventDefault();
         const inputValue = event.target.value;
-        setTimeout(()=> {
+        setTimeout(() => {
             this.props.searchCharactersAction(inputValue)
         }, 2000)
     }
 
-    renderCharacters(){
-        const { searchedCharacters} = this.props;
+    renderCharacters() {
+        const { searchedCharacters } = this.props;
         const listView = getFromStorage("listView");
         const bookmarkedCharacters = getFromStorage("bookmarkedCharacters");
         let charactersToRender = null;
-        if(!searchedCharacters && bookmarkedCharacters){
-            charactersToRender = bookmarkedCharacters;
-        } else if (searchedCharacters) {
+        (!searchedCharacters && bookmarkedCharacters) ?
+            charactersToRender = bookmarkedCharacters :
             charactersToRender = searchedCharacters
-        } 
 
-        if (listView){
-            return <CharacterList searchedCharacters={charactersToRender}/>
-        } else{
-            return <CharacterGrid searchedCharacters={charactersToRender} />
-        }
+        return (listView) ?
+            <CharacterList searchedCharacters={charactersToRender} /> :
+            <CharacterGrid searchedCharacters={charactersToRender} />
+
     }
 
 
     render() {
- 
+
         return (
             <div>
-                <Search onSearchCharacters={this.onSearchCharacters}/>
+                <Search onSearchCharacters={this.onSearchCharacters} />
                 {this.renderCharacters()}
             </div>
         );
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         searchedCharacters: state.searchedCharacters,
         listView: state.listView
     }
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        searchCharactersAction:searchCharactersAction
+        searchCharactersAction: searchCharactersAction
     }, dispatch)
 }
 
