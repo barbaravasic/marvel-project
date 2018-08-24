@@ -14,7 +14,6 @@ class Bookmark extends Component {
             this.props.bookmarkCharacterAction(this.props.character)
         } else if(event.target.classList.contains("checked")) {
             this.props.removeFromBookmarked(this.props.character);
-            window.location.reload()
         }
     }
     

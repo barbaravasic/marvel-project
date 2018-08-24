@@ -44,3 +44,14 @@
     color: #706f6f;
 }
 
+@media screen and (max-width: 650px){
+    .list-image{
+        width: 80px;
+        height: 80px;
+    }
+
+    .list-title h3{
+        font-size: 18px;
+    }
+}
+
