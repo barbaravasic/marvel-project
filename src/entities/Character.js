@@ -3,6 +3,7 @@ export default class Character {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.picture = `${thumbnail.path}.${thumbnail.extension}`
+        this.picture = `${thumbnail.path}.${thumbnail.extension}`;
+        this.bookmarked = false;
     }
 }

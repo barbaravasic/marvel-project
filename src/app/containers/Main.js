@@ -20,11 +20,17 @@ class Main extends Component {
     renderCharacters(){
         const { searchedCharacters} = this.props;
         const listView = getFromStorage("listView");
-        
-        if (!listView){
-            return <CharacterGrid searchedCharacters={searchedCharacters} />
+        const bookmarkedCharacters = getFromStorage("bookmarkedCharacters");
+        let charactersToRender = null;
+        if(!searchedCharacters && bookmarkedCharacters){
+            charactersToRender = bookmarkedCharacters;
+        } else if (searchedCharacters) {
+            charactersToRender = searchedCharacters
+        }
+        if (listView){
+            return <CharacterList searchedCharacters={charactersToRender}/>
         } else{
-            return <CharacterList searchedCharacters={searchedCharacters}/>
+            return <CharacterGrid searchedCharacters={charactersToRender} />
         }
     }
 

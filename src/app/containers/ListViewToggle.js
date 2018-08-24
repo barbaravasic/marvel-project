@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { changeViewAction } from '../../actions/change-view-action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getFromStorage } from '../../services/storage-services';
+import { getFromStorage, saveToStorage } from '../../services/storage-services';
 
 class ListViewToggle extends Component {
 
@@ -11,12 +11,15 @@ class ListViewToggle extends Component {
         if (event.target.classList.contains("fas")) {
             event.preventDefault();
             this.props.changeViewAction(this.props.listView);
+            saveToStorage("listView", this.props.listView);
         }
     }
 
     renderViewIcon() {
         const listView = getFromStorage("listView")
-        if(listView === false){
+        console.log(listView);
+        
+        if(!listView){
             return <i className="fas fa-list-ul"></i>
         } else {
             return <i className="fas fa-th"></i>
