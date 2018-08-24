@@ -4,12 +4,14 @@ import CharacterCard from './CharacterCard';
 import { getFromStorage } from '../../services/storage-services';
 
 const CharacterGrid = (props) => {
+
     const renderCharacters = () => {
-        if (props.searchedCharacters === null) {
+        const bookmarkedCharacters = getFromStorage("bookmarkedCharacters");
+        if (bookmarkedCharacters === null && props.searchedCharacters === null 
+            || bookmarkedCharacters && bookmarkedCharacters.length === 0) {
             return <h4>Type in search</h4>
         } else {
             return props.searchedCharacters.map(character => {
-                const bookmarkedCharacters = getFromStorage("bookmarkedCharacters");
                 if (bookmarkedCharacters) {
                     const bookmarked = bookmarkedCharacters.find(bookmarkedCharacter => bookmarkedCharacter.id === character.id)
                     return (bookmarked === undefined) ? <CharacterCard character={character} key={character.id} />
@@ -20,6 +22,9 @@ const CharacterGrid = (props) => {
             })
         }
     }
+
+
+
     return (
         <main className="container-grid">
             {renderCharacters()}
