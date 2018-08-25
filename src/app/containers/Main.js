@@ -8,6 +8,7 @@ import CharacterList from '../components/CharacterList';
 import { getFromStorage } from '../../services/storage-services';
 
 import './Main.css';
+import Loader from '../components/Loader';
 
 class Main extends Component {
 
@@ -43,6 +44,8 @@ class Main extends Component {
             return <h4 className="no-result">Sorry, no results <i class="far fa-frown"></i></h4>
         } else if (bookmarkedCharacters && bookmarkedCharacters.length === 0 && !this.props.searchedCharacters){
             return <h2 className="main-title">Explore the Marvel Universe by searching for your favorite characters</h2>
+        }else if(this.props.loading){
+            return <Loader />
         }
         return this.renderView()
     }
@@ -61,7 +64,8 @@ class Main extends Component {
 function mapStateToProps(state) {
     return {
         searchedCharacters: state.searchedCharacters,
-        listView: state.listView
+        listView: state.listView,
+        loading:state.loading
     }
 }
 
