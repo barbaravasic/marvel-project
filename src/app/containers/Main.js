@@ -9,6 +9,8 @@ import { getFromStorage } from '../../services/storage-services';
 
 import './Main.css';
 import Loader from '../components/Loader';
+import MainTitle from '../components/MainTitle';
+import NoResults from '../components/NoResults';
 
 class Main extends Component {
 
@@ -19,32 +21,33 @@ class Main extends Component {
             this.props.searchCharactersAction(inputValue)
         }, 2000)
     }
-    
-    
+
+
     renderView() {
         const bookmarkedCharacters = getFromStorage("bookmarkedCharacters");
         const { searchedCharacters } = this.props;
         const listView = getFromStorage("listView");
         let charactersToRender = null;
         (!searchedCharacters && bookmarkedCharacters) ?
-        charactersToRender = bookmarkedCharacters :
-        charactersToRender = searchedCharacters
-        
+            charactersToRender = bookmarkedCharacters :
+            charactersToRender = searchedCharacters
+
         return (listView) ?
-        <CharacterList searchedCharacters={charactersToRender} /> :
-        <CharacterGrid searchedCharacters={charactersToRender} />
-        
+            <CharacterList searchedCharacters={charactersToRender} /> :
+            <CharacterGrid searchedCharacters={charactersToRender} />
+
     }
-    
-    renderCharacters(){
+
+    renderCharacters() {
         const bookmarkedCharacters = getFromStorage("bookmarkedCharacters");
-        if (!this.props.searchedCharacters && !bookmarkedCharacters) {
-            return <h2 className="main-title">Explore the Marvel Universe by searching for your favorite characters</h2>
-        } else if(this.props.searchedCharacters && this.props.searchedCharacters.length === 0){
-            return <h4 className="no-result">Sorry, no results <i class="far fa-frown"></i></h4>
-        } else if (bookmarkedCharacters && bookmarkedCharacters.length === 0 && !this.props.searchedCharacters){
-            return <h2 className="main-title">Explore the Marvel Universe by searching for your favorite characters</h2>
-        }else if(this.props.loading){
+        const { searchedCharacters, loading } = this.props;
+        if (!searchedCharacters && !bookmarkedCharacters) {
+            return <MainTitle />
+        } else if (searchedCharacters && searchedCharacters.length === 0) {
+            return <NoResults />
+        } else if (bookmarkedCharacters && bookmarkedCharacters.length === 0 && !searchedCharacters) {
+            return <MainTitle />
+        } else if (loading) {
             return <Loader />
         }
         return this.renderView()
@@ -65,7 +68,7 @@ function mapStateToProps(state) {
     return {
         searchedCharacters: state.searchedCharacters,
         listView: state.listView,
-        loading:state.loading
+        loading: state.loading
     }
 }
 
