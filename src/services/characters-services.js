@@ -16,6 +16,9 @@ export const getSearchedCharacters = (inputValue) => {
                     return new Character(id, name, description, thumbnail, comics.items, series.items, stories.items);
                 })
             })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
 }

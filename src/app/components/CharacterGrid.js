@@ -15,22 +15,12 @@ const CharacterGrid = (props) => {
             } else {
                 return <CharacterCard character={character} key={character.id} />
             }
-
         })
     }
-    const renderCharacters = () => {
-           if (props.searchedCharacters) {
-               return renderCharacterCards() 
-            // } else if (!props.searchedCharacters && bookmarkedCharacters.length === 0) {
-            //     return <h4>Type in search</h4>
-            } else {
-                return <h4>Type in search</h4>
-            }
-    }
-
+    
     return (
         <main className="container-grid">
-            {renderCharacters()}
+            {renderCharacterCards()}
         </main>
     );
 };
