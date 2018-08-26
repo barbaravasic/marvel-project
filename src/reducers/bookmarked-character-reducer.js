@@ -1,9 +1,10 @@
-import { bookmarkCharacter, searchCharactersFulfilled, removeFromBookmark } from '../shared/constants-action-names';
-import { getFromStorage } from '../services/storage-services';
+import { bookmarkCharacter, searchCharactersFulfilled, removeFromBookmark, searchCharacters } from '../shared/constants-action-names';
+import { getFromStorage, saveToStorage } from '../services/storage-services';
 
-const bookmarkedCharacters = getFromStorage("bookmarkedCharacters");
 
-export const bookmarkCharacterReducer = (state = bookmarkedCharacters, action) => {
+export const bookmarkCharacterReducer = (state, action) => {
+    const bookmarkedCharacters = getFromStorage("bookmarkedCharacters");
+    state = bookmarkedCharacters || [];
     switch (action.type) {
         case bookmarkCharacter:
             if (state.find(character => character.id === action.payload.id) === undefined) {
@@ -11,7 +12,7 @@ export const bookmarkCharacterReducer = (state = bookmarkedCharacters, action) =
             }
             break;
         case searchCharactersFulfilled:
-            if (bookmarkedCharacters) {
+            if (bookmarkedCharacters && bookmarkedCharacters.length !== 0) {
                 state = bookmarkedCharacters
             } else {
                 state = [];
