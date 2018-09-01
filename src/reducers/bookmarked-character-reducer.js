@@ -8,6 +8,7 @@ export const bookmarkCharacterReducer = (state, action) => {
     switch (action.type) {
         case bookmarkCharacter:
             if (state.find(character => character.id === action.payload.id) === undefined) {
+                action.payload.bookmarked = true;
                 state = [...state, action.payload];
             }
             break;
@@ -19,7 +20,10 @@ export const bookmarkCharacterReducer = (state, action) => {
             }
             break;
         case removeFromBookmark:
-            state = state.filter(character => character.id !== action.payload.id);
+            state = state.filter(character => {
+                action.payload.bookmarked = false
+               return character.id !== action.payload.id
+            });
             break;
     }
 
